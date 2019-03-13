@@ -1,5 +1,5 @@
 import * as config from './config/config.json';
-import { User, Product, DirWatcher, Importer } from './models';
+import { User, Product, DirWatcher, Importer } from './modules';
 
 
 console.log(config.name);
