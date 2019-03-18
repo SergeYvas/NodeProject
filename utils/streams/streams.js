@@ -93,10 +93,6 @@ commander
         case commander.convertToFile:
             convertToFile(commander.convertToFile);
             break
-
-        // case commander.bundle:
-        //     bundler(commander.bundle);
-        //     break
     }         
 
   
