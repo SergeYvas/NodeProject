@@ -4,8 +4,6 @@ import fsPromises from 'fs/promises';
 import commander from 'commander';
 import csvjson from 'csvjson';
 
-// const CSS_URL = 'https://github.com/SergeYvas/HomeWork-/blob/master/app/css/main.css'
-
 const readStream = filePath => {
     const stream = fs.createReadStream(filePath, 'utf8');
     stream.on('error', erro => console.log(`reading error: ${err}`));
@@ -57,18 +55,6 @@ const readFileFromURL = async (fileUrl) => {
 
 
 // const bundler = async (dirPath) => {
-//     const filesInDir = await readDir(dirPath);
-//     const filesData = await readFile(dirPath, filesInDir);
-//     const data = await Promise.all(filesData);
-//     const fileFromURL = await readFileFromURL(CSS_URL);
-
-
-//     data.push(fileFromURL);
-//     const dataString = data.join('').toString();
-
-//     const writeStream = fs.createWriteStream(`${dirPath}/_bundle.css`);
-//     writeStream.write(dataString);
-//     writeStream.end();
 // };
 
 
@@ -79,7 +65,6 @@ commander
     .option('-o --outputFile <filePath>', 'output content')
     .option('-c --convertFromFile <filePath>', 'convert csv to json')
     .option('-f --convertToFile <filePath>', 'convert csv to json and save')
-    // .option('-b --bundle <filesPath>', 'bundle css files and save to file')
     .parse(process.argv);
 
 
