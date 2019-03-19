@@ -29,6 +29,7 @@
     "commander": "^2.19.0",
     "csv-parser": "^2.1.0",
     "csvjson": "^5.1.0",
-    "csvtojson": "^2.0.8"
+    "csvtojson": "^2.0.8",
+    "express": "^4.16.4"
   }
 }
