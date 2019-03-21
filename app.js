@@ -1,6 +1,6 @@
 import express from "express";
 import * as config from "./config/config.json";
-import { User, Product, DirWatcher, Importer } from "./modules";
+// import { User, Product, DirWatcher, Importer } from "./modules";
 import jwt from "jsonwebtoken";
 import cookieParser from "./midldewares/cokieparser";
 import queryParser from "./midldewares/queryparser";
@@ -12,36 +12,39 @@ const app = express();
 app.use(cookieParser);
 app.use(queryParser);
 
-app.use(cookieParser());
-
 //  temporary place for routes
 
+app.get('/', (req, res) => {
+    res.send("Hello World!");
+    res.end();
+})
+
 app.get("/api/products", jwtVerifyer, (req, res) => {
-  res.send("Returning ALL products");
-  res.end();
+    res.send("Returning ALL products");
+    res.end();
 });
 
 app.get("/api/products/:id", jwtVerifyer, (req, res) => {
-  const { id } = req.params;
-  res.send(`Return SINGLE product with ID: ${id}`);
+    const { id } = req.params;
+    res.send(`Return SINGLE product with ID: ${id}`);
 
-  res.end();
+    res.end();
 });
 
 app.get("/api/products/:id/reviews", jwtVerifyer, (req, res) => {
-  const { id } = req.params;
-  res.send(`Return ​ALL​ reviews for a single product with ID: ${id}`);
-  res.end();
+    const { id } = req.params;
+    res.send(`Return ​ALL​ reviews for a single product with ID: ${id}`);
+    res.end();
 });
 
-app.get("/api/users", jwtVerifyer,(req, res) => {
-  res.send("Return ALL users");
-  res.end();
+app.get("/api/users", jwtVerifyer, (req, res) => {
+    res.send("Return ALL users");
+    res.end();
 });
 
 app.post("/api/products", jwtVerifyer, (req, res) => {
-  res.send("Add ​NEW​ product and return it");
-  res.end();
+    res.send("Add ​NEW​ product and return it");
+    res.end();
 });
 
 const user = {
@@ -53,34 +56,34 @@ const user = {
 
 
 const successfulAuth = {
-    code: ​200​,
-    message: ​"OK"​,​
-    data: {​
+    code: 200,
+    message: "OK",
+    data: {
         user: {
-            email: ​"awsome@mail.yep"​,​
-            username: ​"awsomeUser"       
-        }   
+            email: "awsome@mail.yep",
+            username: "awsomeUser"
+        }
     },
-    token: ​"awsomeToken"
+    token: "awsomeToken"
 };
 
 const faluereAuth = {
-    code: ​404​,
-    message: ​"Not Found"​,
-    data: "some error text" 
+    code: 404,
+    message: "Not Found",
+    data: "some error text"
 };
 
 app.post("/auth", (req, res) => {
     const isVerifiedName = user.userName === req.parsedQuery.userName;
     const isVerifiedPassword = user.password === req.parsedQuery.password;
 
-    if(isVerifiedName && isVerifiedPassword) {
+    if (isVerifiedName && isVerifiedPassword) {
         const token = jwt.sign(user, 'secret')
 
         res.json({
             success: true,
             token
-          });
+        });
     } else {
         res.status(404).send(JSON.stringify(authFailed));
     }
