@@ -15,7 +15,7 @@ app.use(queryParser);
 //  temporary place for routes
 
 app.get('/', (req, res) => {
-    res.send("Hello World!");
+    res.send('Hello world');
     res.end();
 })
 
@@ -75,7 +75,7 @@ const faluereAuth = {
 
 app.post("/auth", (req, res) => {
     const isVerifiedName = user.userName === req.parsedQuery.userName;
-    const isVerifiedPassword = user.password === req.parsedQuery.password;
+    const isVerifiedPassword = user.email === req.parsedQuery.email;
 
     if (isVerifiedName && isVerifiedPassword) {
         const token = jwt.sign(user, 'secret')
@@ -85,7 +85,7 @@ app.post("/auth", (req, res) => {
             token
         });
     } else {
-        res.status(404).send(JSON.stringify(authFailed));
+        res.status(404).send(JSON.stringify(faluereAuth));
     }
 })
 
