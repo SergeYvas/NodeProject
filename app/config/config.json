@@ -14,12 +14,13 @@
         "host": "127.0.0.1",
         "dialect": "postgres"
       },
-      "production": {
+    "production": {
         "username": "root",
         "password": "root",
         "database": "database_production",
         "host": "127.0.0.1",
         "port": 5432,
         "dialect": "postgres"
-      }
+      },
+    "dbString": "mongodb+srv://sfinks192:189yOm0GKixKhIzc@cluster1-oc3hv.mongodb.net/test?retryWrites=true"
 }
